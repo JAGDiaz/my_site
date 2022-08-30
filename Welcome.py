@@ -130,15 +130,14 @@ with tab_mr:
     which is a 3-dimensional system of ordinary differential equations and we can readily 
     understand it's evolution visually.
     """)
-    trajs = get_lorenz_traj(100)
-    dataframe = pd.DataFrame({"t":np.round(trajs.t, decimals=1) ,**{v: ra for v, ra in zip("xyz", trajs.y)}})
 
-    fig = px.line_3d(dataframe, *"xyz",)
-                     # range_x=[dataframe["x"].values.min(), dataframe["x"].values.max()],
-                     # range_y=[dataframe["y"].values.min(), dataframe["y"].values.max()],
-                     # range_z=[dataframe["z"].values.min(), dataframe["z"].values.max()])
+    dataframe = pd.read_pickle("lorenz63.pkl")
 
-    st.plotly_chart(fig)
+
+    fig = px.line_3d(dataframe, *"xyz", width=600, height=600)
+    fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5)
+
+    st.plotly_chart(fig, use_container_width=True)
     
     st.markdown(    
     """
