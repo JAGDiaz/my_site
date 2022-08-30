@@ -134,7 +134,7 @@ with tab_mr:
     dataframe = pd.read_pickle("lorenz63.pkl")
 
 
-    fig = px.line_3d(dataframe, *"xyz", width=600, height=600)
+    fig = px.line_3d(dataframe, *"xyz", width=600, height=700)
     fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5)
 
     st.plotly_chart(fig, use_container_width=True)
