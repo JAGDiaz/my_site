@@ -48,17 +48,21 @@ with right_column:
     in my transition from the life of a student to one of a professional.
     """)
 
+st.markdown(
+"""
+## A little about me...
+
+I am a San Diego 
+
+""")
+
 
 tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E0 Skills", 
                                                 "\U0001F477 My Work History", 
                                                 "\U0001F52C My Research"])
 
 with tab_prof:
-    st.markdown(
-    """
-    ### Under Construction
-    """)
-
+    pass
 with tab_skill:
     st.markdown(
     """
