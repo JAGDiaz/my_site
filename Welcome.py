@@ -35,7 +35,9 @@ with right_column:
     """)
 
 
-tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E0 Skills", "\U0001F477 My Work History", "\U0001F52C My Research"])
+tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E0 Skills", 
+                                                "\U0001F477 My Work History", 
+                                                "\U0001F52C My Research"])
 
 with tab_prof:
     st.markdown(
@@ -92,11 +94,27 @@ with tab_mwh:
 
 with tab_mr:
     st.markdown(    
-    """
-    ### How do we characterize the evolution of a Machine Learning model under training?
+    f"""
+    #### How do we characterize the evolution of a Machine Learning model under training?
 
+    One of the benefits of neural network models is the ability to learn arbitrary 
+    functions from data under training and subject to some loss function. They do this
+    by optimizing the weights of the kernel and bias matrices that make up the model
+    with respect to that loss function. Consequently even a simple model with a 
+    single hidden layer can have several hundred trainable parameters, which in the 
+    parlance of dynamical systems means that you have a system with several hundred
+    dimensions. Contrast this with something like Lorenz 63
+    """)
+
+    st.latex(r"\begin{align*} a &= b+c \\ e &= f-d \\ q &= 3 \end{align*}")
     
-
+    st.markdown(    
+    f"""
+    which is a 3-dimensional system and we can readily understand it's evolution visually.
+    """)
+    
+    st.markdown(    
+    """
     If you're interested in reading my thesis, you can download a PDF copy below: 
     """)
     c = st.columns(3)
