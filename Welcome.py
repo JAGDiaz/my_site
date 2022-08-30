@@ -135,7 +135,8 @@ with tab_mr:
 
 
     fig = px.line_3d(dataframe, *"xyz", width=600, height=700)
-    fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5)
+    fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5, 
+                      scene_camera=dict(eye=dict(x=2, y=-2, z=1)))
 
     st.plotly_chart(fig, use_container_width=True)
     
