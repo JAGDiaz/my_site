@@ -2,7 +2,21 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as image
+from scipy import integrate
 import pandas as pd
+import plotly.express as px
+
+def lorenz(t,X):
+    x, y, z = X
+    return np.array([10*(y - x), x*(28 - z) - y, x*y - 8*z/3])
+
+@st.cache
+def get_lorenz_traj(t):
+    times = np.linspace(0, t, 5001)
+    trajs = integrate.solve_ivp(lorenz, times[[0,-1]], [-1, 1, 0], 
+                                       t_eval=times, vectorized=True)
+
+    return trajs
 
 st.set_page_config(page_title="Welcome!", page_icon=":the_horns:", layout='centered',
                    initial_sidebar_state='collapsed', 
@@ -105,13 +119,26 @@ with tab_mr:
     parlance of dynamical systems means that you have a system with several hundred
     dimensions. Contrast this with something like Lorenz 63
     """)
-
-    st.latex(r"\begin{align*} a &= b+c \\ e &= f-d \\ q &= 3 \end{align*}")
-    
+    st.latex(r"""
+             \begin{align*}
+                \dot{x} &= 10(y - x) \\
+                \dot{y} &= x(28 - z) - y \\
+                \dot{z} &= xy - 8z/3
+             \end{align*}""")
     st.markdown(    
     f"""
-    which is a 3-dimensional system and we can readily understand it's evolution visually.
+    which is a 3-dimensional system of ordinary differential equations and we can readily 
+    understand it's evolution visually.
     """)
+    trajs = get_lorenz_traj(100)
+    dataframe = pd.DataFrame({"t":np.round(trajs.t, decimals=1) ,**{v: ra for v, ra in zip("xyz", trajs.y)}})
+
+    fig = px.line_3d(dataframe, *"xyz",)
+                     # range_x=[dataframe["x"].values.min(), dataframe["x"].values.max()],
+                     # range_y=[dataframe["y"].values.min(), dataframe["y"].values.max()],
+                     # range_z=[dataframe["z"].values.min(), dataframe["z"].values.max()])
+
+    st.plotly_chart(fig)
     
     st.markdown(    
     """
