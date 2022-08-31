@@ -5,18 +5,21 @@ import matplotlib.image as image
 from scipy import integrate
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 def lorenz(t,X):
     x, y, z = X
     return np.array([10*(y - x), x*(28 - z) - y, x*y - 8*z/3])
 
 @st.cache
-def get_lorenz_traj(t):
-    times = np.linspace(0, t, 5001)
+def get_lorenz_traj(t, n=2001):
+    times = np.linspace(0, t, n)
     trajs = integrate.solve_ivp(lorenz, times[[0,-1]], [-1, 1, 0], 
                                        t_eval=times, vectorized=True)
 
-    return trajs
+    df = pd.DataFrame({"t": trajs.t, **{c: a for c, a in zip("xyz", trajs.y)}})
+    df.to_pickle("lorenz63.pkl")
 
 st.set_page_config(page_title="Welcome!", page_icon=":the_horns:", layout='centered',
                    initial_sidebar_state='collapsed', 
@@ -144,14 +147,55 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
+    # get_lorenz_traj(10)
+
     dataframe = pd.read_pickle("lorenz63.pkl")
 
+    t, x, y, z = dataframe[list("txyz")].values.T
+    del dataframe
+    
+    # fig = px.line_3d(dataframe, *"xyz", width=600, height=700)
+    # fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5, 
+                      # scene_camera=dict(eye=dict(x=2, y=-2, z=1)))
 
-    fig = px.line_3d(dataframe, *"xyz", width=600, height=700)
-    fig.update_layout(title_text='Lorenz 63 with x0 = (-1,1,0)', title_x=0.5, 
-                      scene_camera=dict(eye=dict(x=2, y=-2, z=1)))
+    # fig = go.Figure(
+        # data=[go.Scatter3d(x=x, y=y, z=z)],
+        # layout=go.Layout(title="Start Title",
+                # updatemenus=[dict(
+            # type="buttons",
+            # buttons=[dict(label="Play",
+                          # method="animate",
+                          # args=[None])])]),
+        # frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i])],
+                        # layout=go.Layout(title_text="End Title", 
+                        # # xaxis=dict(range=[x.min(), x.max()], autorange=False),
+                        # # yaxis=dict(range=[y.min(), y.max()], autorange=False)
+                        # )) for i in range(1, x.size)]
+        # )    
+    fig = make_subplots(rows=3, cols=1, 
+                        specs=3*[[{'type':'xy'}]], 
+                        shared_xaxes=True,
+                        vertical_spacing=.02)
+    fig.add_traces([go.Scatter(x=t, y=x, mode='lines'),
+                    go.Scatter(x=t, y=y, mode='lines'),
+                    go.Scatter(x=t, y=z, mode='lines')],
+                   rows=[1,2,3],
+                   cols=[1,1,1])
+    for jj, a in enumerate("xyz"):
+        fig.update_yaxes(title_text=a, row=jj+1, col=1)
+    fig.update_xaxes(title_text="$t$", row=3, col=1)
+    
+    fig.update_layout(height=600, width=800, title_text="The components of Lorenz.")
+
 
     st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown(    
+    f"""
+    While there are tricks to representing dimensions higher 3 they can't cope with several
+    hundred dimensions, let alone thousands. As such, we can consider the weights of the matrices
+    as a 
+    """)
     
     st.markdown(    
     """
