@@ -73,6 +73,17 @@ with st.expander("\U0001F6E0 Skills"):
     """)
 
 with st.expander("\U0001F477 My Work History"):
+
+    st.markdown("If you'd like to read my resume, you can download a PDF copy below:")
+
+    c1 = st.columns(3)
+    with c1[1]:
+        with open("Resume for Joseph Diaz.pdf", "rb") as file:
+            st.download_button("Resume PDF download.", 
+                            data=file,
+                            file_name="Resume for Joseph Diaz.pdf",
+                            key="resume_download")
+
     st.markdown(
     """
     * ***Graduate Teach Assistant, San Diego State University***
@@ -110,17 +121,7 @@ with st.expander("\U0001F477 My Work History"):
         Streamlit interfaces.
 
     ------------
-
-    If you'd like to read my resume, you can download a PDF copy below:
     """)
-
-    c1 = st.columns(3)
-    with c1[1]:
-        with open("Resume for Joseph Diaz.pdf", "rb") as file:
-            st.download_button("Resume PDF download.", 
-                            data=file,
-                            file_name="Resume for Joseph Diaz.pdf",
-                            key="resume_download")
 
 with st.expander("\U0001F52C My Research"):
     st.markdown(    
@@ -183,7 +184,7 @@ with st.expander("\U0001F52C My Research"):
                    cols=[1,1,1])
     for jj, a in enumerate("xyz"):
         fig.update_yaxes(title_text=a, row=jj+1, col=1)
-    fig.update_xaxes(title_text="$t$", row=3, col=1)
+    fig.update_xaxes(title_text="t", row=3, col=1)
     
     fig.update_layout(height=600, width=800, title_text="The components of Lorenz.")
 
