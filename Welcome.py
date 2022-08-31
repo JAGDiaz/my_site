@@ -50,7 +50,7 @@ with right_column:
 
 st.markdown(
 """
-## A little about me...
+### A little about me...
 
 I am a San Diego 
 
@@ -63,6 +63,7 @@ tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E
 
 with tab_prof:
     pass
+
 with tab_skill:
     st.markdown(
     """
@@ -108,7 +109,16 @@ with tab_mwh:
 
     ------------
 
+    If you'd like to read my resume, you can download a PDF copy below:
     """)
+
+    c1 = st.columns(3)
+    with c1[1]:
+        with open("Resume for Joseph Diaz.pdf", "rb") as file:
+            st.download_button("Resume PDF download.", 
+                            data=file,
+                            file_name="Resume for Joseph Diaz.pdf",
+                            key="resume_download")
 
 with tab_mr:
     st.markdown(    
@@ -148,12 +158,13 @@ with tab_mr:
     """
     If you're interested in reading my thesis, you can download a PDF copy below: 
     """)
-    c = st.columns(3)
-    with c[1]:
+    c2 = st.columns(3)
+    with c2[1]:
         with open("A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf", "rb") as file:
             st.download_button("Thesis PDF download.", 
                             data=file,
-                            file_name="A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf")
+                            file_name="A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf",
+                            key="thesis_download")
 
 
 
