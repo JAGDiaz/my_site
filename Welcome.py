@@ -48,29 +48,28 @@ with right_column:
     in my transition from the life of a student to one of a professional.
     """)
 
-st.markdown(
-"""
-### A little about me...
-
-I am a San Diego 
-
-""")
 
 
-tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E0 Skills", 
-                                                "\U0001F477 My Work History", 
-                                                "\U0001F52C My Research"])
+# tab_prof, tab_skill, tab_mwh, tab_mr = st.tabs(["\U0001F464 Profile", "\U0001F6E0 Skills", 
+                                                # "\U0001F477 My Work History", 
+                                                # "\U0001F52C My Research"])
 
-with tab_prof:
-    pass
+with st.expander("\U0001F464 Profile"):
+    st.markdown(
+    """
+    ### A little about me...
 
-with tab_skill:
+    I am a San Diego 
+
+    """)
+
+with st.expander("\U0001F6E0 Skills"):
     st.markdown(
     """
     ### Under Construction
     """)
 
-with tab_mwh:
+with st.expander("\U0001F477 My Work History"):
     st.markdown(
     """
     * ***Graduate Teach Assistant, San Diego State University***
@@ -120,7 +119,7 @@ with tab_mwh:
                             file_name="Resume for Joseph Diaz.pdf",
                             key="resume_download")
 
-with tab_mr:
+with st.expander("\U0001F52C My Research"):
     st.markdown(    
     f"""
     #### How do we characterize the evolution of a Machine Learning model under training?
