@@ -43,7 +43,7 @@ with right_column:
     ### Hello!
 
     My name is Joseph Aaron Gene Diaz and I am a recent graduate of the Applied 
-    Mathematics: Emphasis in Dynamical Systems Masters Program at San Diego State 
+    Mathematics Program at San Diego State 
     University. I am pursuing a career in Data Science and Machine Learning that 
     complements my research and thesis work and utilizes the quantitative skills 
     I've cultivated in my internships and education.
