@@ -163,9 +163,9 @@ with st.expander("\U0001F52C My Research"):
                                                 camera=dict(up=dict(x=0, y=0, z=1),
                                                             eye=dict(x=-1.25, y=1.25, z=.65,)
                                                             )),
-                                    #updatemenus=[dict(type="buttons", 
-                                                      #buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False},
-                                                      #"fromcurrent": True, "transition": {"duration": 300, "easing": "quadratic-in-out"}}])])],
+                                    updatemenus=[dict(type="buttons", 
+                                                      buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False},
+                                                      "fromcurrent": True, "transition": {"duration": 300, "easing": "quadratic-in-out"}}])])],
                                     scene_aspectmode='cube'),
                     frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
                     )
