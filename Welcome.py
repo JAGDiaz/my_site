@@ -148,7 +148,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    get_lorenz_traj(50, n=1001)
+    # get_lorenz_traj(50, n=1001)
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
@@ -163,38 +163,39 @@ with st.expander("\U0001F52C My Research"):
                                                 camera=dict(up=dict(x=0, y=0, z=1),
                                                             eye=dict(x=-1.25, y=1.25, z=.65,)
                                                             )),
-                                    updatemenus=[dict(type="buttons", 
-                                                      buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False},
-                                                      "fromcurrent": True, "transition": {"duration": 300, "easing": "quadratic-in-out"}}])])],
+                                    #updatemenus=[dict(type="buttons", 
+                                                      #buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False},
+                                                      #"fromcurrent": True, "transition": {"duration": 300, "easing": "quadratic-in-out"}}])])],
                                     scene_aspectmode='cube'),
-                    frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)])
+                    #frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
+                    )
 
-    def frame_args(duration):
-        return {
-                "frame": {"duration": duration},
-                "mode": "immediate",
-                "fromcurrent": True,
-                "transition": {"duration": duration, "easing": "linear"},
-            }
+    # def frame_args(duration):
+        # return {
+                # "frame": {"duration": duration},
+                # "mode": "immediate",
+                # "fromcurrent": True,
+                # "transition": {"duration": duration, "easing": "linear"},
+            # }
 
-    sliders = [
-                {
-                    "pad": {"b": 0, "t": 0},
-                    "len": 1,
-                    "x": 0.1,
-                    "y": 0,
-                    "steps": [
-                        {
-                            "args": [[f.name], frame_args(50)],
-                            "label": f"t = {float(f.name):.2f}",
-                            "method": "animate",
-                        }
-                        for k, f in enumerate(fig.frames)
-                    ],
-                }
-            ]    
+    # sliders = [
+                # {
+                    # "pad": {"b": 0, "t": 0},
+                    # "len": 1,
+                    # "x": 0.1,
+                    # "y": 0,
+                    # "steps": [
+                        # {
+                            # "args": [[f.name], frame_args(50)],
+                            # "label": f"t = {float(f.name):.2f}",
+                            # "method": "animate",
+                        # }
+                        # for k, f in enumerate(fig.frames)
+                    # ],
+                # }
+            # ]    
 
-    fig.update_layout(sliders=sliders)
+    # fig.update_layout(sliders=sliders)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown(    
