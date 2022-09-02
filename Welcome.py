@@ -167,7 +167,7 @@ with st.expander("\U0001F52C My Research"):
                                                       #buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False},
                                                       #"fromcurrent": True, "transition": {"duration": 300, "easing": "quadratic-in-out"}}])])],
                                     scene_aspectmode='cube'),
-                    #frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
+                    frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
                     )
 
     # def frame_args(duration):
