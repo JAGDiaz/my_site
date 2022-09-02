@@ -148,7 +148,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    # get_lorenz_traj(50, n=1001)
+    get_lorenz_traj(50, n=4001)
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
@@ -156,17 +156,17 @@ with st.expander("\U0001F52C My Research"):
     del dataframe
 
     fig = go.Figure(
-                    data=[go.Scatter3d(x=x[:0], y=y[:0], z=z[:0],)],
+                    data=[go.Scatter3d(x=x, y=y, z=z,)],
                     layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
                                                 yaxis=dict(range=[y.min(), y.max()], nticks=6), 
                                                 zaxis=dict(range=[z.min(), z.max()], nticks=5),
                                                 camera=dict(up=dict(x=0, y=0, z=1),
                                                             eye=dict(x=-1.25, y=1.25, z=.65,)
                                                             )),
-                                    updatemenus=[dict(type="buttons", 
-                                                      buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False}}])])],
+                                    # updatemenus=[dict(type="buttons", 
+                                                      # buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False}}])])],
                                     scene_aspectmode='cube'),
-                    frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
+                    # frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
                     )
 
     # def frame_args(duration):
@@ -196,6 +196,7 @@ with st.expander("\U0001F52C My Research"):
 
     # fig.update_layout(sliders=sliders)
     st.plotly_chart(fig, use_container_width=True)
+    del x,y,z,t
 
     st.markdown(    
     f"""
