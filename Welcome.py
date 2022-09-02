@@ -148,7 +148,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    get_lorenz_traj(50, n=4001)
+    get_lorenz_traj(50, n=5001)
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
