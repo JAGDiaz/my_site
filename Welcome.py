@@ -156,7 +156,7 @@ with st.expander("\U0001F52C My Research"):
     del dataframe
 
     fig = go.Figure(
-                    data=[go.Scatter3d(x=x, y=y, z=z,)],
+                    data=[go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))],
                     layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
                                                 yaxis=dict(range=[y.min(), y.max()], nticks=6), 
                                                 zaxis=dict(range=[z.min(), z.max()], nticks=5),
