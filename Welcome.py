@@ -6,7 +6,6 @@ from scipy import integrate
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 def lorenz(t,X):
     x, y, z = X
@@ -62,15 +61,16 @@ with st.expander("\U0001F464 Profile"):
     """
     ### A little about me...
 
-    I am a San Diego 
+    I am a San Diego native who has had 
 
-    """)
-
-with st.expander("\U0001F6E0 Skills"):
-    st.markdown(
-    """
     ### Under Construction
+
     """)
+
+# with st.expander("\U0001F6E0 Skills"):
+    # st.markdown(
+    # """
+    # """)
 
 with st.expander("\U0001F477 My Work History"):
 
@@ -148,7 +148,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    get_lorenz_traj(50, n=5001)
+    # get_lorenz_traj(50, n=5001)
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
@@ -156,45 +156,18 @@ with st.expander("\U0001F52C My Research"):
     del dataframe
 
     fig = go.Figure(
-                    data=[go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))],
+                    data=[
+                        go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))
+                        ],
                     layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
                                                 yaxis=dict(range=[y.min(), y.max()], nticks=6), 
                                                 zaxis=dict(range=[z.min(), z.max()], nticks=5),
                                                 camera=dict(up=dict(x=0, y=0, z=1),
                                                             eye=dict(x=-1.25, y=1.25, z=.65,)
                                                             )),
-                                    # updatemenus=[dict(type="buttons", 
-                                                      # buttons=[dict(label="Play", method="animate", args=[None, {"frame": {"duration": 50, "redraw": False}}])])],
                                     scene_aspectmode='cube'),
-                    # frames=[go.Frame(data=[go.Scatter3d(x=x[:i], y=y[:i], z=z[:i], mode='lines')], name=str(k)) for i, k in enumerate(t)]
                     )
 
-    # def frame_args(duration):
-        # return {
-                # "frame": {"duration": duration},
-                # "mode": "immediate",
-                # "fromcurrent": True,
-                # "transition": {"duration": duration, "easing": "linear"},
-            # }
-
-    # sliders = [
-                # {
-                    # "pad": {"b": 0, "t": 0},
-                    # "len": 1,
-                    # "x": 0.1,
-                    # "y": 0,
-                    # "steps": [
-                        # {
-                            # "args": [[f.name], frame_args(50)],
-                            # "label": f"t = {float(f.name):.2f}",
-                            # "method": "animate",
-                        # }
-                        # for k, f in enumerate(fig.frames)
-                    # ],
-                # }
-            # ]    
-
-    # fig.update_layout(sliders=sliders)
     st.plotly_chart(fig, use_container_width=True)
     del x,y,z,t
 
@@ -203,6 +176,8 @@ with st.expander("\U0001F52C My Research"):
     While there are tricks to representing dimensions higher 3 they can't cope with several
     hundred dimensions, let alone thousands. As such, we can consider the weights of the matrices
     as a 
+    
+    ### Under Construction
     """)
     
     st.markdown(    
