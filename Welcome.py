@@ -70,6 +70,7 @@ with st.expander("\U0001F464 Profile"):
 # with st.expander("\U0001F6E0 Skills"):
     # st.markdown(
     # """
+    # ### Under Construction
     # """)
 
 with st.expander("\U0001F477 My Work History"):
@@ -86,6 +87,8 @@ with st.expander("\U0001F477 My Work History"):
 
     st.markdown(
     """
+    ------------
+    
     * ***Graduate Teach Assistant, San Diego State University***
         - __Teaching__: I wrote interactive code lectures that utilized the Python and markdown 
         features of Jupyter Notebooks to provide supplementary instruction in a course on 
@@ -120,7 +123,6 @@ with st.expander("\U0001F477 My Work History"):
         visualization and analysis by utilizing Python implementations of the QT, Dash, and 
         Streamlit interfaces.
 
-    ------------
     """)
 
 with st.expander("\U0001F52C My Research"):
@@ -175,8 +177,9 @@ with st.expander("\U0001F52C My Research"):
     f"""
     While there are tricks to representing dimensions higher 3 they can't cope with several
     hundred dimensions, let alone thousands. As such, we can consider the weights of the matrices
-    as a 
-    
+    from a more probablistic point of view: As the network evolves, what is the probability that 
+    a given weight appears in the weight matrices for each layer? 
+
     ### Under Construction
     """)
     
