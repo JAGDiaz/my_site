@@ -117,7 +117,7 @@ with st.expander("\U0001F477 My Work History"):
         automated data collection and data processing code for a seamless pipeline between experiments
         and actionable insights.
 
-        -__Signal Processing__: I operated signal processing equipment for network analysis,
+        - __Signal Processing__: I operated signal processing equipment for network analysis,
         spectrum analysis, noise-figure characterization, and arbitrary waveform generation, and 
         bolstered efforts to use these for testing the efficacy of experimental electrical circuits.
 
