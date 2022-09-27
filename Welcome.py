@@ -57,13 +57,21 @@ with right_column:
                                                 # "\U0001F52C My Research"])
 
 with st.expander("\U0001F464 Profile"):
+
     st.markdown(
     """
     ### A little about me...
 
-    I am a San Diego native who has had 
+    I am a San Diego native who has always been interested in computers and what they
+    can do. As such, I originally pursued a degree in Computer Science before becoming
+    fascinated with Mathematics and it's intersection with programming and Computational
+    Science.
 
-    ### Under Construction
+    I am a team player who is also comfortable working independently. I have  I 
+    have demonstrated these qualities throughout my college career through academics and 
+    community service. They are also demonstrated by my work ethic and interpersonal 
+    relationships. I am flexible and versatile, and can maintain a sense of humor while 
+    working under pressure.
 
     """)
 
@@ -88,41 +96,61 @@ with st.expander("\U0001F477 My Work History"):
     st.markdown(
     """
     ------------
-    
+
+    * ***Data Analyst/Scientist Intern, Cryogenic Exploitation of Radio Frequency Lab***
+        - __Automation__: I used the Socket API in Python to create interfaces for electronic lab 
+        equipment to automate the running of experiments and data collection in a 
+        data pipeline through the local lab network.
+
+        - __Web Programming__: I assisted in the creation of web-based applets for data 
+        visualization and analysis by utilizing Python implementations of the QT, Dash, and 
+        Streamlit interfaces through the local lab network.
+
+        - __Data Processing__: I created scripts for identifying, selecting, and 
+        replacing or cleaning missing or noisy data points in data sets gleaned from experimental 
+        measurements. These scripts also restructured the data to json, hdf5, csv, or added it to a 
+        relational database as the project required.
+
+        - __Data Analysis__: I utilized statistical techniques such as smoothing, binning, 
+        time series analysis, regression analysis and stochastic analysis to find trends in data sets 
+        and adjust models accordingly. These were implemented in conjunction with the 
+        automated data collection and data processing code for a seamless pipeline between experiments
+        and actionable insights.
+
+        -__Signal Processing__: I operated signal processing equipment for network analysis,
+        spectrum analysis, noise-figure characterization, and arbitrary waveform generation, and 
+        bolstered efforts to use these for testing the efficacy of experimental electrical circuits.
+
+    ------------
+
     * ***Graduate Teach Assistant, San Diego State University***
         - __Teaching__: I wrote interactive code lectures that utilized the Python and markdown 
         features of Jupyter Notebooks to provide supplementary instruction in a course on 
         introductory Python programming, data analysis, visualization, and the employment of 
         Python packages such as Numpy, Scipy, Pandas, and Matplotlib.
 
-        - __Tutoring__: I coached my students in any foundational material that was necessary to 
-        understand the course content and fill any gaps in knowledge.
+        - __Tutoring__: I coached my students in foundational material required
+        to understand critical course content in addition to clarifying misconceptions and 
+        supplementing student's learning by tying new material to the foundational material.
 
-        - __Automated Grading__: I made use of the Unit Test class in python to program an automated 
-        homework grader on the Gradescope online grading platform.
+        - __Automated Grading__: I leveraged the Python Unit Test framework to develop and
+        deploy an automated homework grader compatible with the Gradescope online grading platform.
 
     ------------
 
     * ***Student Researcher, San Diego State University Research Foundation***
-        - __Machine Learning__: I experimented with neural network architectures in the TensorFlow 
-        API to create models to approximate statistical functions and predict future states of 
-        dynamical systems.
+        - __Machine Learning__: I explored and investigated neural network architectures in 
+        the TensorFlow API to create sequential network models to approximate statistical functions and predict
+        future states of dynamical systems. I examined applying well understood statistical methods 
+        such as fittings and density estimation to the evolution of individual layers in a neural 
+        network model; new networks models with different hyperparamers were developed from this 
+        analysis and progress was catalogued for review by my research advisor.
 
-        - __Data Visualization__: I implemented statistical methods from the statistics submodule 
-        of Scipy and Matplotlib to represent and visualize the evolution of Machine Learning models 
-        as training takes place with the goal of quanitfying good training when standard metric are 
-        unavailable.
-
-    ------------
-
-    * ***Data Analyst/Scientist, Cryogenic Exploitation of Radio Frequency Lab***
-        - __Automation__: I used the Socket API in Python to create interfaces for electronic lab 
-        equipment to automate the running of experiments and data collection.
-
-        - __Web Programming__: I assisted in the creation of web-based applets for data 
-        visualization and analysis by utilizing Python implementations of the QT, Dash, and 
-        Streamlit interfaces.
-
+        - __Data Visualization__: I conceived of and wrote algorithms that used the statistics
+        submodules of Scipy and Numpy to represent and visualize the evolution of Machine Learning 
+        models as training takes place with the goal of quantifying good training when standard 
+        metric are unavailable. I translated R code for visualizing climate data into Python 
+        using Matplotlib as supplementary material for a course on climate statistics.
     """)
 
 with st.expander("\U0001F52C My Research"):
