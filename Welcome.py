@@ -67,7 +67,7 @@ with st.expander("\U0001F464 Profile"):
     fascinated with Mathematics and it's intersection with programming and Computational
     Science.
 
-    I am a team player who is also comfortable working independently. I have  I 
+    I am a team player who is also comfortable working independently. I 
     have demonstrated these qualities throughout my college career through academics and 
     community service. They are also demonstrated by my work ethic and interpersonal 
     relationships. I am flexible and versatile, and can maintain a sense of humor while 
@@ -154,9 +154,21 @@ with st.expander("\U0001F477 My Work History"):
     """)
 
 with st.expander("\U0001F52C My Research"):
+    
+    st.markdown(    
+    """
+    If you're interested in reading my thesis, you can download a PDF copy below: 
+    """)
+    c2 = st.columns(3)
+    with c2[1]:
+        with open("A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf", "rb") as file:
+            st.download_button("Thesis PDF download.", 
+                            data=file,
+                            file_name="A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf",
+                            key="thesis_download")
     st.markdown(    
     f"""
-    #### How do we characterize the evolution of a Machine Learning model under training?
+    ### How do we characterize the evolution of a Machine Learning model under training?
 
     One of the benefits of neural network models is the ability to learn arbitrary 
     functions from data under training and subject to some loss function. They do this
@@ -210,46 +222,3 @@ with st.expander("\U0001F52C My Research"):
 
     ### Under Construction
     """)
-    
-    st.markdown(    
-    """
-    If you're interested in reading my thesis, you can download a PDF copy below: 
-    """)
-    c2 = st.columns(3)
-    with c2[1]:
-        with open("A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf", "rb") as file:
-            st.download_button("Thesis PDF download.", 
-                            data=file,
-                            file_name="A Study on Quantifying Effective Training of DLDMD - Joseph Diaz.pdf",
-                            key="thesis_download")
-
-
-
-
-
-# st.markdown("The graph of $y = \sin(x^a)$ is given below.")
-
-# a = st.slider('\U0001d44e', 1, 10, step=1)
-
-# x = np.linspace(-np.pi, np.pi, 1001)
-
-# fig, ax = plt.subplots(figsize=(15,8))
-
-# ax.plot(x, np.sin(x**a), '-k', label="$y=sin(x^a)$")
-# ax.set(xlabel="$x$", ylabel="$y$", title="A SINE WAVE WITH VARIABLE FREQUENCY!!!")
-# ax.legend(loc='best')
-# ax.grid(True, which='both')
-
-# st.pyplot(fig, clear_figure=True)
-# st.caption("The graph that was promised.")
-
-
-
-# the_file = st.file_uploader("Dooooo a thing.", type="pkl")
-# if the_file is not None and the_file.name.endswith(".pkl"):
-    # hyp_params = pkl.load(the_file)
-    # for key in hyp_params.keys():
-        # st.write(f"{key}: {hyp_params[key]}")
-# else:
-    # st.write("That is an unsupported file type, please upload a pickle file.")
-
