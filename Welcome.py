@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as image
+import matplotlib.animation as anime
 from scipy import integrate
 import pandas as pd
 import plotly.express as px
@@ -12,12 +13,11 @@ def lorenz(t,X):
     return np.array([10*(y - x), x*(28 - z) - y, x*y - 8*z/3])
 
 @st.cache
-def get_lorenz_traj(t, n=3001):
+def get_lorenz_traj(t, n=3001, seconds=15):
     times = np.linspace(0, t, n)
     trajs = integrate.solve_ivp(lorenz, times[[0,-1]], [-1, 1, 0], 
                                        t_eval=times, vectorized=True)
-
-    
+ 
     df = pd.DataFrame({"t": trajs.t, **{c: a for c, a in zip("xyz", trajs.y)}})
     df.to_pickle("lorenz63.pkl")
 
@@ -30,11 +30,24 @@ def get_lorenz_traj(t, n=3001):
     ax.set_xlabel("$x$", size=15)
     ax.set_ylabel("$y$", size=15)
     ax.set_zlabel("$z$", size=15)
-    ax.set_title(f"Lorenz Evolution, $t = {times[0]:.3f}$", size=25)
+    ax.set_title(f"Lorenz Evolution, $t = {times[0]:05.3f}$", size=25)
 
-    ax.plot(x,y,z)
+    lines, = ax.plot(x,y,z, color="tab:red")
+    fig.tight_layout()
+    
+    meta = dict(title=f"Lorenz Evolution", 
+                artist="Matplotlib")
+    writer = anime.FFMpegWriter(fps=times.size//seconds, metadata=meta)
 
-    return fig
+    with writer.saving(fig, "lorenzpkl.mp4", 150):
+
+        for ii, t in enumerate(times):
+            low_index = max([0, ii-100])
+            
+            lines.set_data_3d(x[low_index:ii], y[low_index:ii], z[low_index:ii])
+            ax.set_title(f"Lorenz Evolution, $t = {t:05.3f}$", size=25)
+
+            writer.grab_frame()
 
 st.set_page_config(page_title="Welcome!", page_icon=":the_horns:", layout='centered',
                    initial_sidebar_state='collapsed', 
@@ -225,7 +238,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    st.pyplot(get_lorenz_traj(50, n=5001))
+    get_lorenz_traj(50, n=5001, seconds=20)
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
@@ -247,6 +260,8 @@ with st.expander("\U0001F52C My Research"):
 
     st.plotly_chart(fig, use_container_width=True)
     del x,y,z,t
+
+    st.image("RIGHT_ROUND.mp4", caption="Lorenz", use_column_width=True)
 
     st.markdown(    
     f"""
