@@ -39,7 +39,7 @@ def get_lorenz_traj(t, n=3001, seconds=15):
                 artist="Matplotlib")
     writer = anime.FFMpegWriter(fps=times.size//seconds, metadata=meta)
 
-    with writer.saving(fig, "lorenzpkl.mp4", 150):
+    with writer.saving(fig, "lorenz63.mp4", 150):
 
         for ii, t in enumerate(times):
             low_index = max([0, ii-100])
@@ -238,7 +238,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    # get_lorenz_traj(50, n=5001, seconds=20)
+    get_lorenz_traj(50, n=5001, seconds=20)
 
     st.video(open('lorenz63.mp4', 'rb').read())
 
