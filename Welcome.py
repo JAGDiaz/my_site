@@ -7,6 +7,7 @@ from scipy import integrate
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import base64
 
 def lorenz(t,X):
     x, y, z = X
@@ -238,32 +239,16 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    # get_lorenz_traj(50, n=5001, seconds=20)
-
     st.video(open("lorenz63.mp4", 'rb').read())
+    file_ = open("lorenz63.gif", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
 
-    # dataframe = pd.read_pickle("lorenz63.pkl")
-
-    # t, x, y, z = dataframe[list("txyz")].values.T
-    # del dataframe
-
-    # fig = go.Figure(
-                    # data=[
-                        # go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))
-                        # ],
-                    # layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
-                                                # yaxis=dict(range=[y.min(), y.max()], nticks=6), 
-                                                # zaxis=dict(range=[z.min(), z.max()], nticks=5),
-                                                # camera=dict(up=dict(x=0, y=0, z=1),
-                                                            # eye=dict(x=-1.25, y=1.25, z=.65,)
-                                                            # )),
-                                    # scene_aspectmode='cube'),
-                    # )
-
-    # st.plotly_chart(fig, use_container_width=True)
-    # del x,y,z,t
-
-    # st.image("RIGHT_ROUND.mp4", caption="Lorenz", use_column_width=True)
+    st.markdown(
+        f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+        unsafe_allow_html=True,
+    )
 
     st.markdown(    
     f"""
@@ -271,6 +256,8 @@ with st.expander("\U0001F52C My Research"):
     hundred dimensions, let alone thousands. As such, we can consider the weights of the matrices
     from a more probablistic point of view: As the network evolves, what is the probability that 
     a given weight appears in the weight matrices for each layer? 
+
+    To do this, we generate histograms from each layer and for each epoch.
 
     ### Under Construction
     """)
