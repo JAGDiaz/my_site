@@ -238,30 +238,32 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    get_lorenz_traj(50, n=5001, seconds=20)
+    # get_lorenz_traj(50, n=5001, seconds=20)
 
-    dataframe = pd.read_pickle("lorenz63.pkl")
+    st.video(open('lorenz63.mp4', 'rb').read())
 
-    t, x, y, z = dataframe[list("txyz")].values.T
-    del dataframe
+    # dataframe = pd.read_pickle("lorenz63.pkl")
 
-    fig = go.Figure(
-                    data=[
-                        go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))
-                        ],
-                    layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
-                                                yaxis=dict(range=[y.min(), y.max()], nticks=6), 
-                                                zaxis=dict(range=[z.min(), z.max()], nticks=5),
-                                                camera=dict(up=dict(x=0, y=0, z=1),
-                                                            eye=dict(x=-1.25, y=1.25, z=.65,)
-                                                            )),
-                                    scene_aspectmode='cube'),
-                    )
+    # t, x, y, z = dataframe[list("txyz")].values.T
+    # del dataframe
 
-    st.plotly_chart(fig, use_container_width=True)
-    del x,y,z,t
+    # fig = go.Figure(
+                    # data=[
+                        # go.Scatter3d(x=x, y=y, z=z, mode='lines', line=dict(color=t, colorscale='jet'))
+                        # ],
+                    # layout=go.Layout(scene=dict(xaxis=dict(range=[x.min(), x.max()], nticks=6), 
+                                                # yaxis=dict(range=[y.min(), y.max()], nticks=6), 
+                                                # zaxis=dict(range=[z.min(), z.max()], nticks=5),
+                                                # camera=dict(up=dict(x=0, y=0, z=1),
+                                                            # eye=dict(x=-1.25, y=1.25, z=.65,)
+                                                            # )),
+                                    # scene_aspectmode='cube'),
+                    # )
 
-    st.image("RIGHT_ROUND.mp4", caption="Lorenz", use_column_width=True)
+    # st.plotly_chart(fig, use_container_width=True)
+    # del x,y,z,t
+
+    # st.image("RIGHT_ROUND.mp4", caption="Lorenz", use_column_width=True)
 
     st.markdown(    
     f"""
