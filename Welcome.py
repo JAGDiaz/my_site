@@ -17,8 +17,24 @@ def get_lorenz_traj(t, n=3001):
     trajs = integrate.solve_ivp(lorenz, times[[0,-1]], [-1, 1, 0], 
                                        t_eval=times, vectorized=True)
 
+    
     df = pd.DataFrame({"t": trajs.t, **{c: a for c, a in zip("xyz", trajs.y)}})
     df.to_pickle("lorenz63.pkl")
+
+    x, y, z = trajs.y
+    fig = plt.figure(figsize=(10,7))
+
+    ax = fig.add_subplot(111, projection='3d')
+    ax.set(xlim=(x.min(), x.max()), ylim=(y.min(), y.max()), 
+           zlim=(z.min(), z.max()),)
+    ax.set_xlabel("$x$", size=15)
+    ax.set_ylabel("$y$", size=15)
+    ax.set_zlabel("$z$", size=15)
+    ax.set_title(f"Lorenz Evolution, $t = {times[0]:.3f}$", size=25)
+
+    ax.plot(x,y,z)
+
+    return fig
 
 st.set_page_config(page_title="Welcome!", page_icon=":the_horns:", layout='centered',
                    initial_sidebar_state='collapsed', 
@@ -60,6 +76,7 @@ with st.expander("\U0001F464 Profile"):
 
     st.markdown(
     """
+
     ### A little about me...
 
     I am a San Diego native who has always been interested in computers and what they
@@ -74,6 +91,24 @@ with st.expander("\U0001F464 Profile"):
     working under pressure.
 
     """)
+    
+    """
+    
+    ### A little about me...
+
+    I am a San Diego native who has always been interested in computers and what they
+    can do. As such, I originally pursued a degree in Computer Science before becoming
+    fascinated with Mathematics and it's intersection with programming and Computational
+    Science.
+
+    I am a team player who is also comfortable working independently. I 
+    have demonstrated these qualities throughout my college career through academics and 
+    community service. They are also demonstrated by my work ethic and interpersonal 
+    relationships. I am flexible and versatile, and can maintain a sense of humor while 
+    working under pressure.
+
+    """
+
 
 # with st.expander("\U0001F6E0 Skills"):
     # st.markdown(
@@ -190,7 +225,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    # get_lorenz_traj(50, n=5001)
+    st.pyplot(get_lorenz_traj(50, n=5001))
 
     dataframe = pd.read_pickle("lorenz63.pkl")
 
