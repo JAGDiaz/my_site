@@ -240,7 +240,7 @@ with st.expander("\U0001F52C My Research"):
 
     get_lorenz_traj(50, n=5001, seconds=20)
 
-    st.video(open('lorenz63.mp4', 'rb').read())
+    st.video(open("lorenz63.mp4", 'rb').read())
 
     # dataframe = pd.read_pickle("lorenz63.pkl")
 
