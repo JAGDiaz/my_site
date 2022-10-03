@@ -106,22 +106,22 @@ with st.expander("\U0001F464 Profile"):
 
     """)
     
-    """
+    # """
     
-    ### A little about me...
+    # ### A little about me...
 
-    I am a San Diego native who has always been interested in computers and what they
-    can do. As such, I originally pursued a degree in Computer Science before becoming
-    fascinated with Mathematics and it's intersection with programming and Computational
-    Science.
+    # I am a San Diego native who has always been interested in computers and what they
+    # can do. As such, I originally pursued a degree in Computer Science before becoming
+    # fascinated with Mathematics and it's intersection with programming and Computational
+    # Science.
 
-    I am a team player who is also comfortable working independently. I 
-    have demonstrated these qualities throughout my college career through academics and 
-    community service. They are also demonstrated by my work ethic and interpersonal 
-    relationships. I am flexible and versatile, and can maintain a sense of humor while 
-    working under pressure.
+    # I am a team player who is also comfortable working independently. I 
+    # have demonstrated these qualities throughout my college career through academics and 
+    # community service. They are also demonstrated by my work ethic and interpersonal 
+    # relationships. I am flexible and versatile, and can maintain a sense of humor while 
+    # working under pressure.
 
-    """
+    # """
 
 
 # with st.expander("\U0001F6E0 Skills"):
@@ -239,7 +239,7 @@ with st.expander("\U0001F52C My Research"):
     understand it's evolution visually.
     """)
 
-    st.video(open("lorenz63.mp4", 'rb').read())
+    st.video(open("lorenz63.mp4", 'rb').read(), )
 
     st.markdown(    
     f"""
