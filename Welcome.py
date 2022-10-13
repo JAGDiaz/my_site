@@ -5,9 +5,6 @@ import matplotlib.image as image
 import matplotlib.animation as anime
 from scipy import integrate
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-import base64
 
 def lorenz(t,X):
     x, y, z = X
@@ -227,12 +224,13 @@ with st.expander("\U0001F52C My Research"):
     parlance of dynamical systems means that you have a system with several hundred
     dimensions. Contrast this with something like Lorenz 63
     """)
-    st.latex(r"""
-             \begin{align*}
-                \dot{x} &= 10(y - x) \\
-                \dot{y} &= x(28 - z) - y \\
-                \dot{z} &= xy - 8z/3
-             \end{align*}""")
+    st.latex(
+    r"""
+    \begin{align*}
+        \dot{x} &= 10(y - x) \\
+        \dot{y} &= x(28 - z) - y \\
+        \dot{z} &= xy - 8z/3
+    \end{align*}""")
     st.markdown(    
     f"""
     which is a 3-dimensional system of ordinary differential equations and we can readily 
@@ -243,12 +241,15 @@ with st.expander("\U0001F52C My Research"):
 
     st.markdown(    
     f"""
-    While there are tricks to representing dimensions higher 3 they can't cope with several
+    While there are tricks to representing dimensions higher than 3 they can't cope with several
     hundred dimensions, let alone thousands. As such, we can consider the weights of the matrices
     from a more probablistic point of view: As the network evolves, what is the probability that 
     a given weight appears in the weight matrices for each layer? 
 
-    To do this, we generate histograms from each layer and for each epoch.
+    To do this, we generate histograms from each layer and for each epoch. 
 
     ### Under Construction
     """)
+
+    st.video(open("layer_Output_evolution_hist_.mp4", 'rb').read(), )
+
